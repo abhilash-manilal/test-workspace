@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>My Website</title>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="icon" href="./favicon.ico" type="image/x-icon">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.0/FileSaver.min.js"></script>
+</head>
+
+<body>
+    <main>
+        <h1>Welcome to My Website</h1>
+
+        <div id="to_save" style="padding: 10px; background: #f5da55">
+            <h4 style="color: #000; ">Hello world!</h4>
+        </div>
+
+        <button id="download"> Download </button>
+
+
+    </main>
+    <script src="index.js"></script>
+    <script>
+        $("#download").on("click", function () {
+            html2canvas(document.querySelector("#to_save")).then(canvas => {
+                canvas.toBlob(function (blob) {
+                    window.saveAs(blob, 'my_image.jpg');
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>
